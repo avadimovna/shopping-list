@@ -1,0 +1,72 @@
+.start-page {
+  background-color: rgb(149, 149, 149);
+  padding: 8px;
+  height: 100vh;
+}
+
+.start-page__title {
+  color: aliceblue;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.lists-area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list-field__list,
+.lists-area__add-button,
+.lists-area__input {
+  width: 100%;
+  font-size: 24px;
+  padding: 8px;
+  background-color: rgb(156, 120, 76);
+  border: 1px solid rgb(156, 120, 76);
+  color: aliceblue;
+  cursor: pointer;
+}
+
+.lists-area__add-button {
+  background-color: transparent;
+}
+
+.lists-area__input-field,
+.list-field {
+  display: flex;
+  gap: 4px;
+}
+
+.lists-area__button-done,
+.lists-area__button-cancel,
+.list-field__button-delete {
+  border: 1px solid rgb(156, 120, 76);
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.lists-area__button-done {
+  background: transparent url("images/button-done.png") no-repeat center
+    center / cover;
+}
+
+.lists-area__button-cancel {
+  background: transparent url("images/button-cancel.png") no-repeat center
+    center / cover;
+}
+
+.list-field__button-delete {
+  background: transparent url("images/button-bin.png") no-repeat center center /
+    cover;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #ccc;
+  color: #666;
+  border-color: #999;
+  pointer-events: none;
+}

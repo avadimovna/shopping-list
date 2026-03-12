@@ -619,3 +619,7 @@ function saveList(listData) {
 function clearPage() {
     document.body.replaceChildren();
 }
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}

@@ -251,7 +251,7 @@ function createListPage(listContent, itemsContainer) {
         const backdrop = createMoreBtnModal([
             {
                 name: 'Export',
-                listener: () => exportList()
+                listener: () => shareList()
             }
         ]);
         document.body.append(backdrop);

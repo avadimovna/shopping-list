@@ -251,7 +251,14 @@ function createListPage(listContent, itemsContainer) {
         const backdrop = createMoreBtnModal([
             {
                 name: 'Export',
-                listener: () => shareList()
+                listener: () => exportList()
+            },
+            {
+                 name: 'Share',
+                 listener: () => {
+                    document.querySelector('.more-button-backdrop')?.remove();
+                    shareList();
+                }
             }
         ]);
         document.body.append(backdrop);
@@ -536,6 +543,7 @@ function createMoreBtnModal(options) {
             label.appendChild(input);
             optionItem.appendChild(label);
         } else {
+            backdrop.remove();
             optionItem.textContent = option.name;
             optionItem.addEventListener('click', option.listener);
         }

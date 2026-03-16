@@ -18,17 +18,17 @@ h2 {
   flex-grow: 1;
 }
 
-.lists-area {
+.lists-container {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
 .list-field__list,
-.lists-area__add-button,
+.lists-container__add-button,
 .list-page__button-add-item,
 .list-item,
-.lists-area__input,
+.lists-container__input,
 .list-page__input {
   font-size: 24px;
   padding: 8px;
@@ -45,26 +45,26 @@ h2 {
   align-items: center;
 }
 
-.lists-area__input,
+.lists-container__input,
 .list-page__input,
 .list-field__list {
   width: 100%;
 }
 
-.lists-area__add-button,
+.lists-container__add-button,
 .list-page__button-add-item,
 .list-item {
   background-color: transparent;
 }
 
-.lists-area__input-field,
+.lists-container__input-field,
 .list-field {
   display: flex;
   gap: 4px;
 }
 
-.lists-area__button-done,
-.lists-area__button-cancel,
+.lists-container__button-done,
+.lists-container__button-cancel,
 .list-field__button-delete {
   border: 1px solid rgb(156, 120, 76);
   width: 52px;
@@ -72,12 +72,12 @@ h2 {
   flex-shrink: 0;
 }
 
-.lists-area__button-done {
+.lists-container__button-done {
   background: transparent url("images/button-done.png") no-repeat center
     center / cover;
 }
 
-.lists-area__button-cancel {
+.lists-container__button-cancel {
   background: transparent url("images/button-cancel.png") no-repeat center
     center / cover;
 }

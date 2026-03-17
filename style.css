@@ -36,6 +36,11 @@ h2 {
   border: 1px solid rgb(156, 120, 76);
   color: aliceblue;
   cursor: pointer;
+  min-height: 30px;
+}
+
+.list-page__button-add-item {
+  border-top: none;
 }
 
 .list-item {
@@ -43,6 +48,7 @@ h2 {
   border: none;
   border-bottom: 1px solid rgb(156, 120, 76);
   align-items: center;
+  min-height: 30px;
 }
 
 .lists-container__input,
@@ -108,6 +114,14 @@ h2 {
   justify-content: center;
   align-items: center;
   padding: 8px;
+}
+
+.list-page__title-field {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(46, 46, 46);
 }
 
 .list-page__title {
@@ -253,6 +267,11 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-top: 56px;
+}
+
+body.edit-mode .list-page__container {
+  margin-top: 64px;
 }
 
 .list-page__items {

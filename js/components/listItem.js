@@ -6,8 +6,11 @@ export function createListItem(itemData) {
     const listItem = document.createElement('div');
     listItem.classList.add('list-item');
     const label = document.createElement('span');
+    label.classList.add('list-item__title');
     label.textContent = itemData.label;
     listItem.index = itemData.index;
+    const dragBtn = document.createElement('button');
+    dragBtn.classList.add('list-item__button-drag');
     const deleteBtn = document.createElement('button');
     deleteBtn.classList.add('list-item__button-delete');
     deleteBtn.addEventListener('click', (event) => {
@@ -16,12 +19,12 @@ export function createListItem(itemData) {
     });
     listItem.addEventListener('click', () => {
         if (state.editMode) {
-            handleItemClickInEditMode(listItem);
+            handleItemClickInEditMode(listItem, label);
         } else {
             handleItemClick(listItem);
         }
     });
-    listItem.append(label, deleteBtn);
+    listItem.append(dragBtn, label, deleteBtn);
     return listItem;
 }
 
@@ -32,8 +35,8 @@ export function deleteListItem(listItem) {
     listItem.remove();
 }
 
-function handleItemClickInEditMode(listItem) {
-    const {backdrop, input} = createEditItemModal(listItem);
+function handleItemClickInEditMode(listItem, label) {
+    const {backdrop, input} = createEditItemModal(listItem, label);
     document.body.append(backdrop);
     input.focus();
 }

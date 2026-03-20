@@ -86,7 +86,7 @@ export function createListItemModal(itemsContainer, position) {
     return { backdrop, input};
 }
 
-export function createEditItemModal(listItem) {
+export function createEditItemModal(listItem, label) {
     const listData = getCurrentList();
     const backdrop = document.createElement('div');
     backdrop.classList.add('backdrop');
@@ -119,7 +119,7 @@ export function createEditItemModal(listItem) {
     okBtn.classList.add('modal__button-ok');
     okBtn.textContent = "OK";
     okBtn.addEventListener('click', () => {
-        listItem.textContent = input.value.trim();
+        label.textContent = input.value.trim();
         let index = listData.items.findIndex((item) => item.index === listItem.index);
         listData.items[index].label = input.value.trim();
         saveList(listData);

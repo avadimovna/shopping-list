@@ -49,6 +49,12 @@ h2 {
   border-bottom: 1px solid rgb(156, 120, 76);
   align-items: center;
   min-height: 30px;
+  gap: 8px;
+}
+
+.list-item__title {
+  flex-grow: 1;
+  overflow-x: auto;
 }
 
 .lists-container__input,
@@ -122,6 +128,7 @@ h2 {
   left: 0;
   right: 0;
   background-color: rgb(46, 46, 46);
+  z-index: 10;
 }
 
 .list-page__title {
@@ -164,13 +171,22 @@ h2 {
 }
 
 .list-item__button-delete {
+  background: transparent url("images/button-cancel.png") no-repeat center
+    center / cover;
+}
+
+.list-item__button-drag {
+  background: transparent url("images/button-drag.png") no-repeat center
+    center / cover;
+}
+
+.list-item__button-delete,
+.list-item__button-drag {
   display: none;
   width: 30px;
   height: 30px;
-  background: transparent url("images/button-cancel.png") no-repeat center
-    center / cover;
   border: none;
-  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .hidden {
@@ -188,6 +204,7 @@ h2 {
   right: 0;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.6);
+  z-index: 20;
 }
 
 .more-button-backdrop {
@@ -197,6 +214,7 @@ h2 {
   left: 0;
   right: 0;
   background-color: transparent;
+  z-index: 20;
 }
 
 .modal {
@@ -204,6 +222,7 @@ h2 {
   background-color: rgb(115, 115, 115);
   border-radius: 16px;
   padding: 40px;
+  z-index: 30;
 }
 
 .more-modal {
@@ -221,6 +240,7 @@ h2 {
   list-style-type: none;
   padding: 8px;
   margin: 0;
+  z-index: 30;
 }
 
 .more-modal__option {
@@ -270,7 +290,7 @@ h2 {
   margin-top: 56px;
 }
 
-body.edit-mode .list-page__container {
+.edit-mode .list-page__container {
   margin-top: 64px;
 }
 
@@ -280,6 +300,7 @@ body.edit-mode .list-page__container {
   gap: 4px;
 }
 
-.edit-mode .list-item__button-delete {
+.edit-mode .list-item__button-delete
+/* .edit-mode .list-item__button-drag*/ {
   display: block;
 }

@@ -1,10 +1,19 @@
-const CACHE_NAME = "shopping-list-v1.5";
+const CACHE_NAME = "shopping-list-v1.6";
 
 const FILES_TO_CACHE = [
   "/",
   "/index.html",
   "/style.css",
-  "/script.js",
+  "/js/components/listField.js",
+  "/js/components/listItem.js",
+  "/js/components/modal.js",
+  "/js/pages/listPage.js",
+  "/js/pages/startPage.js",
+  "/js/state/state.js",
+  "/js/utils/share.js",
+  "/js/utils/storage.js",
+  "/js/utils/utils.js",
+  "/js/main.js",
   "/manifest.json",
   "/icon-192.png",
   "/icon-512.png",
@@ -13,7 +22,8 @@ const FILES_TO_CACHE = [
   "/images/button-cancel.png",
   "/images/button-done.png",
   "/images/button-edit.png",
-  "/images/button-more.png"  
+  "/images/button-more.png",
+  "/images/button-drag.png"
 ];
 
 self.addEventListener("install", (event) => {

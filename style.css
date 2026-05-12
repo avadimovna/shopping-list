@@ -9,7 +9,12 @@ h2 {
 .start-page,
 .list-page {
   background-color: rgb(46, 46, 46);
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.list-page {
+  display: flex;
+  flex-direction: column;
 }
 
 .start-page__title {
@@ -37,6 +42,10 @@ h2 {
   color: aliceblue;
   cursor: pointer;
   min-height: 30px;
+}
+
+.list-field__list {
+  overflow-x: auto;
 }
 
 .list-page__button-add-item {
@@ -135,6 +144,7 @@ h2 {
   width: 100%;
   font-size: 32px;
   color: aliceblue;
+  overflow-x: auto;
 }
 
 .list-page__button-edit,
@@ -254,16 +264,17 @@ h2 {
 
 .modal__title {
   color: aliceblue;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .modal__input {
-  font-size: 16px;
+  font-size: 20px;
   width: 100%;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid rgb(40, 210, 202);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  color: aliceblue;
 }
 
 .modal__buttons-container {
@@ -279,10 +290,11 @@ h2 {
   border: none;
   background-color: transparent;
   color: rgb(40, 210, 202);
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .list-page__container {
+  flex: 1;
   background-color: black;
   display: flex;
   flex-direction: column;
@@ -300,7 +312,19 @@ h2 {
   gap: 4px;
 }
 
-.edit-mode .list-item__button-delete
-/* .edit-mode .list-item__button-drag*/ {
+.edit-mode .list-item__button-delete,
+.edit-mode .list-item__button-drag {
   display: block;
+}
+
+.is-dragging {
+  position: fixed;
+  z-index: 15;
+  width: 100%;
+  box-sizing: border-box;
+  opacity: 0.7;
+}
+
+.placeholder {
+  background-color: rgb(89, 127, 51);
 }

@@ -16,7 +16,7 @@ export function createListField(listData) {
         state.currentListId = listData.index;
         const {listContainer: listContent, itemsContainer} = createListContent();
         listData.items.forEach((item) => {
-            const listItem = createListItem(item);
+            const listItem = createListItem(item, itemsContainer);
             if (item.completed) {
                 listItem.classList.add('list-item--completed');
             }

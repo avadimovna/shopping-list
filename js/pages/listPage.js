@@ -12,6 +12,13 @@ export function createListPage(listContent, itemsContainer) {
     listPage.classList.add('list-page');
     const titleField = document.createElement('div');
     titleField.classList.add('list-page__title-field');
+
+    function updateContentMargin() {
+        requestAnimationFrame(() => {
+            listContent.style.marginTop = titleField.getBoundingClientRect().height + 'px';
+        });
+    }
+
     const backBtn = document.createElement('button');
     backBtn.classList.add('list-page__button-back');
 
@@ -58,7 +65,8 @@ export function createListPage(listContent, itemsContainer) {
             let index = state.lists.findIndex((list) => list.index === listData.index);
             state.lists[index].name = newName;
             saveState();
-          
+            
+            updateContentMargin()
         });
 
         input.addEventListener('input', () => {
@@ -74,6 +82,8 @@ export function createListPage(listContent, itemsContainer) {
         listContent.append(addListItemBottomBtn);
         titleField.prepend(input);
         titleField.prepend(doneBtn);
+
+        updateContentMargin();
     })
     const moreBtn = document.createElement('button');
     moreBtn.classList.add('list-page__button-more');
@@ -95,6 +105,9 @@ export function createListPage(listContent, itemsContainer) {
     })
     titleField.append(backBtn, title, editBtn, moreBtn);
     listPage.appendChild(titleField);
+
+    updateContentMargin()
+
     return listPage;
 }
 

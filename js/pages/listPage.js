@@ -1,9 +1,10 @@
-import { clearPage } from "../utils/utils.js";
+import { clearPage, toggleFilter } from "../utils/utils.js";
 import { renderStartPage } from "./startPage.js";
 import { state, getCurrentList } from "../state/state.js";
 import { createMoreBtnModal, createListItemModal } from "../components/modal.js";
 import { exportList, shareList } from "../utils/share.js";
 import { loadState, saveState } from "../utils/storage.js";
+import { createListItem } from "../components/listItem.js";
 
 
 export function createListPage(listContent, itemsContainer) {
@@ -99,6 +100,10 @@ export function createListPage(listContent, itemsContainer) {
                     document.querySelector('.more-button-backdrop')?.remove();
                     shareList();
                 }
+            },
+            {
+                name: () => state.filterUncopmlete ? 'Show all' : 'Hide completed',
+                listener: () => toggleFilter()
             }
         ]);
         document.body.append(backdrop);
@@ -109,6 +114,30 @@ export function createListPage(listContent, itemsContainer) {
     updateContentMargin()
 
     return listPage;
+}
+
+export function renderListPage(listData) {
+    state.currentListId = listData.index;
+    const {listContainer: listContent, itemsContainer} = createListContent();
+    listData.items.forEach((item) => {
+        const listItem = createListItem(item, itemsContainer);
+        if (item.completed) {
+            listItem.classList.add('list-item--completed');
+        }
+        itemsContainer.append(listItem);
+    })
+    const listPage = createListPage(listContent, itemsContainer);
+    listPage.appendChild(listContent);
+    document.body.appendChild(listPage)
+}
+
+function createListContent() {
+    const listContainer = document.createElement('div');
+    listContainer.classList.add('list-page__container');
+    const itemsContainer = document.createElement('div');
+    itemsContainer.classList.add('list-page__items');
+    listContainer.append(itemsContainer);
+    return {listContainer, itemsContainer};
 }
 
 function createAddListItemButton(itemsContainer, position) {

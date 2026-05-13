@@ -4,7 +4,8 @@ import { generateIndex } from "../utils/utils.js";
 export const state = {
     lists: [],
     currentListId: null,
-    editMode: false
+    editMode: false,
+    filterUncopmlete: false
 };
 
 export function getCurrentList() {

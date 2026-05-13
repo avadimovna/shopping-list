@@ -1,8 +1,6 @@
 import { clearPage } from "../utils/utils.js";
-import { createListItem } from "./listItem.js";
-import { createListPage } from "../pages/listPage.js";
+import { renderListPage } from "../pages/listPage.js";
 import { createDeleteListModal } from "./modal.js";
-import { state } from "../state/state.js";
 
 export function createListField(listData) {
     const listField = document.createElement('div');
@@ -13,18 +11,7 @@ export function createListField(listData) {
     list.classList.add('list-field__list');
     list.addEventListener('click', () => {
         clearPage();
-        state.currentListId = listData.index;
-        const {listContainer: listContent, itemsContainer} = createListContent();
-        listData.items.forEach((item) => {
-            const listItem = createListItem(item, itemsContainer);
-            if (item.completed) {
-                listItem.classList.add('list-item--completed');
-            }
-            itemsContainer.append(listItem);
-        })
-        const listPage = createListPage(listContent, itemsContainer);
-        listPage.appendChild(listContent);
-        document.body.appendChild(listPage);
+        renderListPage(listData);
     });
     const deleteBtn = document.createElement('button');
     deleteBtn.classList.add('list-field__button-delete');
@@ -34,13 +21,4 @@ export function createListField(listData) {
     })
     listField.append(list, deleteBtn);
     return listField;
-}
-
-function createListContent() {
-    const listContainer = document.createElement('div');
-    listContainer.classList.add('list-page__container');
-    const itemsContainer = document.createElement('div');
-    itemsContainer.classList.add('list-page__items');
-    listContainer.append(itemsContainer);
-    return {listContainer, itemsContainer};
 }

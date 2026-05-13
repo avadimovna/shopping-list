@@ -122,6 +122,10 @@ h2 {
   text-decoration: line-through;
 }
 
+.filtered .list-item--completed {
+  display: none;
+}
+
 .list-page__title-field,
 .start-page__title-container {
   display: flex;

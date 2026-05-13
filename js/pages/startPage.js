@@ -3,6 +3,8 @@ import { state, createListData } from "../state/state.js";
 import { createMoreBtnModal } from "../components/modal.js";
 import { importList } from "../utils/share.js";
 import { createListField } from "../components/listField.js";
+import { clearPage } from "../utils/utils.js";
+import { renderListPage } from "./listPage.js";
 
 function createStartPage() {
     const startPage = document.createElement('div');
@@ -68,6 +70,8 @@ function createAddListButton(listArea) {
             const listData = createListData(listName);
             const listField = createListField(listData);
             listArea.prepend(listField);
+            clearPage();
+            renderListPage(listData);
         });
         input.addEventListener('keydown', (event) => {
             if (event.key === 'Enter' && input.value.trim().length > 0) {
@@ -91,7 +95,9 @@ function createAddListButton(listArea) {
 export function renderStartPage() {
     state.editMode = false;
     state.currentListId = null;
+    state.filterUncopmlete = false;
     document.body.classList.remove('edit-mode');
+    document.body.classList.remove('filtered');
     const startpage = createStartPage();
     const listsContainer = createListsContainer();
     loadState();

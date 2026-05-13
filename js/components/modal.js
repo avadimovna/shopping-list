@@ -203,8 +203,13 @@ export function createMoreBtnModal(options) {
             optionItem.appendChild(label);
         } else {
             backdrop.remove();
-            optionItem.textContent = option.name;
-            optionItem.addEventListener('click', option.listener);
+            optionItem.textContent = typeof option.name === 'function' ? option.name() : option.name;
+            optionItem.addEventListener('click', () => {
+                option.listener();
+                if (typeof option.name === 'function') {
+                    optionItem.textContent = option.name();
+                }
+            });
         }
         modal.appendChild(optionItem);
     });

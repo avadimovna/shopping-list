@@ -3,6 +3,15 @@ export function createSearchModal(listContainer, itemsContainer) {
     let allHighlights = [];
     const modal = document.createElement('div');
     modal.classList.add('find-items-modal')
+
+     function positionModal() {
+        const vv = window.visualViewport;
+        if (!vv) return;
+        modal.style.top = (vv.offsetTop + vv.height - modal.offsetHeight) + 'px';
+        modal.style.left = vv.offsetLeft + 'px';
+        modal.style.width = vv.width + 'px';
+    }
+
     const input = document.createElement('input');
     input.classList.add('find-items-modal__input');
     input.type = 'text';
@@ -48,7 +57,14 @@ export function createSearchModal(listContainer, itemsContainer) {
     closeButton.classList.add('find-items-modal__close-button');
     closeButton.addEventListener('click', () => closeModal())
     modal.append(input, prevButton, nextButton, closeButton);
-    listContainer.appendChild(modal);
+    document.body.appendChild(modal);
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', positionModal);
+        window.visualViewport.addEventListener('scroll', positionModal);
+    }
+
+    requestAnimationFrame(positionModal);
+
     const modalHeight = modal.getBoundingClientRect().height;
     listContainer.style.marginBottom = modalHeight + 'px';
     input.focus();

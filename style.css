@@ -342,7 +342,6 @@ h2 {
 .find-items-modal {
   background-color: rgb(115, 115, 115);
   position: fixed;
-  bottom: 0;
   left: 0;
   right: 0;
   display: flex;

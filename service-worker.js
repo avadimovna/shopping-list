@@ -1,4 +1,4 @@
-const CACHE_NAME = "shopping-list-v1.7";
+const CACHE_NAME = "shopping-list-v1.8";
 
 const FILES_TO_CACHE = [
   "/",
@@ -35,6 +35,7 @@ self.addEventListener("install", (event) => {
       return cache.addAll(FILES_TO_CACHE);
     })
   );
+  self.skipWaiting();
 });
 
 self.addEventListener("fetch", (event) => {
@@ -43,4 +44,5 @@ self.addEventListener("fetch", (event) => {
       return response || fetch(event.request);
     })
   );
+  self.clients.claim();
 });

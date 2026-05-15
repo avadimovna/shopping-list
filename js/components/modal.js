@@ -202,13 +202,10 @@ export function createMoreBtnModal(options) {
             label.appendChild(input);
             optionItem.appendChild(label);
         } else {
-            backdrop.remove();
-            optionItem.textContent = typeof option.name === 'function' ? option.name() : option.name;
+            optionItem.textContent = option.name;
             optionItem.addEventListener('click', () => {
                 option.listener();
-                if (typeof option.name === 'function') {
-                    optionItem.textContent = option.name();
-                }
+                backdrop.remove();
             });
         }
         modal.appendChild(optionItem);

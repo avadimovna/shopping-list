@@ -112,7 +112,6 @@ h2 {
 .list-item--completed {
   opacity: 0.6;
   cursor: not-allowed;
-  background-color: #ccc;
   color: #666;
   pointer-events: none;
 }
@@ -271,14 +270,21 @@ h2 {
   font-size: 24px;
 }
 
-.modal__input {
+.modal__input,
+.find-items-modal__input {
   font-size: 20px;
   width: 100%;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid rgb(40, 210, 202);
+  border-bottom: 1px solid rgb(76, 76, 76);
   margin-bottom: 12px;
   color: aliceblue;
+}
+
+.modal__input:focus,
+.find-items-modal__input:focus {
+  outline: none;
+  border-color: rgb(40, 210, 202);
 }
 
 .modal__buttons-container {
@@ -331,4 +337,58 @@ h2 {
 
 .placeholder {
   background-color: rgb(89, 127, 51);
+}
+
+.find-items-modal {
+  background-color: rgb(115, 115, 115);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  z-index: 40;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.find-items-modal__input {
+  box-sizing: border-box;
+  flex-grow: 1;
+  margin: 0;
+  font-size: 20px;
+}
+
+.find-items-modal__prev-button,
+.find-items-modal__next-button,
+.find-items-modal__close-button {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border: none;
+}
+
+.find-items-modal__prev-button,
+.find-items-modal__next-button {
+  background: transparent url("images/button-prev.png") no-repeat center
+    center / cover;
+}
+
+.find-items-modal__next-button {
+  transform: rotate(180deg);
+}
+
+.find-items-modal__close-button {
+  background: transparent url("images/button-close.png") no-repeat center
+    center / cover;
+}
+
+.search-highlight {
+  background-color: rgb(197, 136, 49);
+}
+
+.search-highlight--current {
+  background-color: rgb(187, 164, 49);
 }

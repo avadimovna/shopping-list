@@ -2,6 +2,7 @@ import { clearPage, toggleFilter } from "../utils/utils.js";
 import { renderStartPage } from "./startPage.js";
 import { state, getCurrentList } from "../state/state.js";
 import { createMoreBtnModal, createListItemModal } from "../components/modal.js";
+import { createSearchModal } from "../components/searchModal.js";
 import { exportList, shareList } from "../utils/share.js";
 import { loadState, saveState } from "../utils/storage.js";
 import { createListItem } from "../components/listItem.js";
@@ -44,6 +45,7 @@ export function createListPage(listContent, itemsContainer) {
         title.classList.add('hidden');
         editBtn.classList.add('hidden');
         backBtn.classList.add('hidden');
+        moreBtn.classList.add('hidden');
         const doneBtn = document.createElement('button');
         doneBtn.classList.add('list-page__button-done');
         const addListItemTopBtn = createAddListItemButton(itemsContainer, 'top');
@@ -61,6 +63,7 @@ export function createListPage(listContent, itemsContainer) {
             title.classList.remove('hidden');
             editBtn.classList.remove('hidden');
             backBtn.classList.remove('hidden');
+            moreBtn.classList.remove('hidden');
             listData.name = newName;
             loadState();
             let index = state.lists.findIndex((list) => list.index === listData.index);
@@ -102,8 +105,12 @@ export function createListPage(listContent, itemsContainer) {
                 }
             },
             {
-                name: () => state.filterUncopmlete ? 'Show all' : 'Hide completed',
+                name: state.filterUncopmlete ? 'Show all' : 'Hide completed',
                 listener: () => toggleFilter()
+            },
+            {
+                name: 'Search',
+                listener: () => createSearchModal(listContent, itemsContainer)
             }
         ]);
         document.body.append(backdrop);

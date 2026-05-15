@@ -1,4 +1,4 @@
-const CACHE_NAME = "shopping-list-v1.6";
+const CACHE_NAME = "shopping-list-v1.7";
 
 const FILES_TO_CACHE = [
   "/",
@@ -7,6 +7,7 @@ const FILES_TO_CACHE = [
   "/js/components/listField.js",
   "/js/components/listItem.js",
   "/js/components/modal.js",
+  "/js/components/searchModal.js",
   "/js/pages/listPage.js",
   "/js/pages/startPage.js",
   "/js/state/state.js",
@@ -23,7 +24,9 @@ const FILES_TO_CACHE = [
   "/images/button-done.png",
   "/images/button-edit.png",
   "/images/button-more.png",
-  "/images/button-drag.png"
+  "/images/button-drag.png",
+  "/images/button-prev.png",
+  "/images/button-close.png"
 ];
 
 self.addEventListener("install", (event) => {
